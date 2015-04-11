@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-#div1 .active{background:yellow;}
-#div1 div{width:200px;height:200px;background:#ccc;display:none;}
-</style>
-<script type="text/javascript" >
-window.onload=function(){
-	var oDiv=document.getElementById('div1');
-	var aBtn=oDiv.getElementsByTagName('input');
-	var aDiv=oDiv.getElementsByTagName('div');
-	for(var i=0;i<aBtn.length;i++){
-		aBtn[i].index=i;
-		aBtn[i].onclick=function(){
-			for(var j=0;j<aBtn.length;j++){
-				aBtn[j].className="";
-				aDiv[j].style.display='none';
-				
-			}
-			this.className="active";
-			aDiv[this.index].style.display='block';
-		}
-	}
-}
-</script>
+	<meta charset="utf-8" />
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin: 0}
+		#tab{width:283px;border:1px solid #ccc;height: 300px;}
+		#tab div{display:none}
+		#tab ul {overflow: hidden;margin-left: -1px;}
+		#tab ul li{float: left;list-style: none;width:70px;text-align: center;border-left: 1px solid #ccc;border-bottom: 1px solid #ccc;}
+		#tab .active{border-bottom: 0px;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv=document.getElementById('tab');
+			var aLi=oDiv.getElementsByTagName('li');
+			var aDiv=oDiv.getElementsByTagName('div');
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index=i;
+				aLi[i].onmouseover=function(){
+					for (var j = 0; j < aLi.length; j++) {
+						aLi[j].className='';
+						aDiv[j].style.display='none';
+					};
+					this.className='active';
+					aDiv[this.index].style.display='block';
+				};
+			};
+		};
+	</script>
 </head>
 <body>
-
-<div id="div1">
-<input type="button" value"one" class="active">
-<input type="button" value="two">
-<input type="button" value="three">
-<input type="button" value="four">
-<div style="display:block">1</div>
-<div>2</div>
-<div>3</div>
-<div>4</div>
+<div id="tab">
+	<ul><li class="active">one</li><li>two</li><li>three
+</li><li>four</li></ul>
+	<div style="display:block;">1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
 </div>
 </body>
 </html>
